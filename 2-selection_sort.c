@@ -1,4 +1,5 @@
 #include "sort.h"
+
 /**
  * selection_sort - Sorts using the selection sort algorithm.
  *
@@ -16,7 +17,7 @@ void selection_sort(int *array, size_t size)
         return;
     for (i = 0; i < size - 1; i++)
     {
-        for(j = size - 1, k = i + 1; j > i; j--)
+	for(j = size - 1, k = i + 1; j > i; j--)
         {
             if (array[j] < array[k])
             {
