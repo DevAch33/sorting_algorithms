@@ -6,16 +6,15 @@
  * @s1: first int to swap.
  * @s2: second int to swap.
  */
-void swap(int *array,size_t size,int *s1, int *s2)
+void swap(int *array, size_t size, int *s1, int *s2)
 {
-    if (*s1 != *s2)
-    {
-        *s1 = *s1 + *s2;
-        *s2 = *s1 - *s2;
-        *s1 = *s1 - *s2;
-        print_array((const int *)array, size);
-    }
-
+	if (*s1 != *s2)
+	{
+		*s1 = *s1 + *s2;
+		*s2 = *s1 - *s2;
+		*s1 = *s1 - *s2;
+		print_array((const int *)array, size);
+	}
 }
 
 /**
@@ -29,14 +28,13 @@ void swap(int *array,size_t size,int *s1, int *s2)
  */
 int lomuto_partition(int *array, size_t size, ssize_t low, ssize_t high)
 {
-    int i, j , pivot = array[high];
+	int i, j, pivot = array[high];
 
-    for (i = j = low; j < high; j++)
-        if (array[j] < pivot)
-            swap(array, size, &array[j], &array[i++]);
-    swap(array, size, &array[i], &array[high]);
-
-    return (i);
+	for (i = j = low; j < high; j++)
+		if (array[j] < pivot)
+			swap(array, size, &array[j], &array[i++]);
+	swap(array, size, &array[i], &array[high]);
+	return (i);
 }
 
 /**
@@ -51,13 +49,13 @@ int lomuto_partition(int *array, size_t size, ssize_t low, ssize_t high)
 
 void quicksort(int *array, size_t size, ssize_t low, ssize_t high)
 {
-    if (low < high)
-    {
-        size_t p = lomuto_partition(array, size, low, high);
+	if (low < high)
+	{
+		size_t p = lomuto_partition(array, size, low, high);
 
-        quicksort(array, size, low, p - 1);
-        quicksort(array, size, p + 1, high);
-    }
+		quicksort(array, size, low, p - 1);
+		quicksort(array, size, p + 1, high);
+	}
 }
 
 /**
@@ -69,7 +67,7 @@ void quicksort(int *array, size_t size, ssize_t low, ssize_t high)
  */
 void quick_sort(int *array, size_t size)
 {
-    if (!array || !size)
-        return;
-    quicksort(array, size, 0 , size - 1);
+	if (!array || !size)
+		return;
+	quicksort(array, size, 0, size - 1);
 }
